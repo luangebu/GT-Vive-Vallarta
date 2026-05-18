@@ -561,7 +561,12 @@
     </script>
 
     <script>
-        // --- SCRIPT PARA EL FORMULARIO DE RESERVAS ---
+               // --- SCRIPT PARA EL FORMULARIO DE RESERVAS ---
+
+        // ✅ TUS DATOS YA CONFIGURADOS
+        const USUARIO = "luangebu";
+        const REPO = "GT-Vive-Vallarta";
+        const ARCHIVO = "reservas.json";
 
         // Agregar más campos para pasajeros
         function agregarPasajero() {
@@ -575,14 +580,14 @@
             contenedor.appendChild(nuevoCampo);
         }
 
-        // Guardar datos al enviar formulario
-        document.getElementById('formularioReserva').addEventListener('submit', function(e) {
+        // Guardar datos DIRECTO en GitHub
+        document.getElementById('formularioReserva').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             // Recolectar datos
             const reserva = {
                 id: Date.now(),
-                fechaRegistro: new Date().toLocaleString(),
+                fechaRegistro: new Date().toLocaleString('es-MX'),
                 nombreTitular: document.getElementById('nombreTitular').value,
                 telefono: document.getElementById('telefono').value,
                 destino: document.getElementById('destino').value,
@@ -596,13 +601,31 @@
                 if(input.value.trim() !== '') reserva.pasajeros.push(input.value.trim());
             });
 
-            // Guardar en el navegador
-            let reservasGuardadas = JSON.parse(localStorage.getItem('reservasViveVallarta')) || [];
-            reservasGuardadas.push(reserva);
-            localStorage.setItem('reservasViveVallarta', JSON.stringify(reservasGuardadas));
+            try {
+                // 1. Leer archivo actual de tu repositorio
+                let respuesta = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
+                let reservas = await respuesta.json();
+                
+                // 2. Agregar la nueva reserva
+                reservas.push(reserva);
+                
+                // 3. Guardar cambios en el archivo
+                await fetch(`https://api.allorigins.win/raw?url=https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`, {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        message: "Nueva reserva recibida",
+                        content: btoa(JSON.stringify(reservas, null, 2)),
+                        sha: await (await fetch(`https://api.allorigins.win/raw?url=https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`)).json().sha
+                    })
+                });
 
-            alert('✅ ¡Reserva guardada correctamente! Gracias por preferirnos.');
-            this.reset();
+                alert('✅ ¡Reserva guardada correctamente! Gracias por preferirnos.');
+                this.reset();
+            } catch (err) {
+                alert('❌ Error: Asegúrate de haber creado el archivo reservas.json');
+                console.error(err);
+            }
         });
     </script>
 
