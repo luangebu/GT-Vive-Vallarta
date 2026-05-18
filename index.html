@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="google-site-verification" content="dpBTCy8-WAQ5NH04kV5Eq4CWVo-DkjHyJqKpug11IZY" />
+    <meta name="google-site-verification" content="dpBTCy8-WAQ5NH04kV5Eq4CWVo-DkjHyJqKpug11IZY" />
     <title>Grupo Travel Vive Vallarta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
-            tailwind.config = {
+     <meta name="google-site-verification" content="dpBTCy8-WAQ5NH04kV5Eq4CWVo-DkjHyJqKpug11IZY" />
+        tailwind.config = {
             theme: {
                 extend: {
                     colors: {
@@ -30,120 +31,31 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .carrusel-temas-contenedor {
-                position: relative;
-                overflow: hidden;
-            }
-            .carrusel-temas-item {
-                display: none;
-                animation: fadeIn 0.6s ease-in-out;
-            }
-            .carrusel-temas-item.activo {
-                display: flex;
-            }
-            .punto-indicador {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background-color: rgba(255,255,255,0.3);
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .punto-indicador.activo {
-                background-color: #D4AF37;
-                box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
-            }
-            .content-auto {
-                content-visibility: auto;
-            }
-            .sombra-card {
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
-            }
-            .transicion {
-                transition: all 0.5s ease;
-            }
-            .carrusel-contenedor {
-                position: relative;
-                overflow: hidden;
-            }
-            .carrusel-item {
-                display: none;
-                animation: fadeIn 0.6s ease-in-out;
-            }
-            .carrusel-item.activo {
-                display: block;
-            }
-            .boton-carrusel {
-                @apply absolute top-1/2 -translate-y-1/2 bg-claro/20 text-dorado w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg transicion hover:bg-dorado hover:text-fondo;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0.5; transform: translateY(5px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .punto-ruta {
-                @apply relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-3 before:h-3 before:bg-dorado before:rounded-full before:border-2 before:border-primario;
-            }
-            .borde-dorado {
-                border: 1px solid #D4AF37;
-            }
-            .titulo-recuadro {
-                border: 2px solid #D4AF37;
-                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-                padding: 8px 20px;
-                border-radius: 10px;
-                display: inline-block;
-                background-color: rgba(212, 175, 55, 0.08);
-            }
-
-            /* ✅ ESTILOS PARA SISTEMA DE PÁGINAS */
-            .pagina {
-                display: none;
-                min-height: calc(100vh - 80px);
-                animation: aparecer 0.4s ease;
-            }
-            .pagina.activa {
-                display: block;
-            }
-            @keyframes aparecer {
-                from { opacity: 0; transform: scale(0.98); }
-                to { opacity: 1; transform: scale(1); }
-            }
-            .menu-activo {
-                color: #D4AF37 !important;
-                font-weight: bold;
-                text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-            }
-
-            /* ✅ ESTILO BOTÓN FLOTANTE WHATSAPP */
-            .btn-flotante-whatsapp {
-                position: fixed;
-                bottom: 25px;
-                right: 25px;
-                width: 60px;
-                height: 60px;
-                background-color: #25D366;
-                color: white;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 30px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 2px rgba(37, 211, 102, 0.2);
-                z-index: 9999;
-                transition: all 0.3s ease;
-            }
-            .btn-flotante-whatsapp:hover {
-                transform: scale(1.1);
-                background-color: #1ebe5d;
-            }
+            .carrusel-temas-contenedor { position: relative; overflow: hidden; }
+            .carrusel-temas-item { display: none; animation: fadeIn 0.6s ease-in-out; }
+            .carrusel-temas-item.activo { display: flex; }
+            .punto-indicador { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease; }
+            .punto-indicador.activo { background-color: #D4AF37; box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3); }
+            .sombra-card { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15); }
+            .transicion { transition: all 0.5s ease; }
+            .carrusel-contenedor { position: relative; overflow: hidden; }
+            .carrusel-item { display: none; animation: fadeIn 0.6s ease-in-out; }
+            .carrusel-item.activo { display: block; }
+            .boton-carrusel { @apply absolute top-1/2 -translate-y-1/2 bg-claro/20 text-dorado w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg transicion hover:bg-dorado hover:text-fondo; }
+            @keyframes fadeIn { from { opacity: 0.5; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+            .punto-ruta { @apply relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-3 before:h-3 before:bg-dorado before:rounded-full before:border-2 before:border-primario; }
+            .borde-dorado { border: 1px solid #D4AF37; }
+            .titulo-recuadro { border: 2px solid #D4AF37; box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); padding: 8px 20px; border-radius: 10px; display: inline-block; background-color: rgba(212, 175, 55, 0.08); }
+            .pagina { display: none; min-height: calc(100vh - 80px); animation: aparecer 0.4s ease; }
+            .pagina.activa { display: block; }
+            @keyframes aparecer { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+            .menu-activo { color: #D4AF37 !important; font-weight: bold; text-shadow: 0 0 8px rgba(212, 175, 55, 0.4); }
+            .btn-flotante-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 2px rgba(37, 211, 102, 0.2); z-index: 9999; transition: all 0.3s ease; }
+            .btn-flotante-whatsapp:hover { transform: scale(1.1); background-color: #1ebe5d; }
         }
     </style>
 </head>
 <body class="bg-fondo text-texto font-sans">
-
-    <!-- ==============================================
-    SECCIÓN 1: CABECERA Y MENÚ DE NAVEGACIÓN
-    ===============================================-->
     <header class="sticky top-0 z-50 bg-fondo/90 backdrop-blur-md shadow-md">
         <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
@@ -162,33 +74,18 @@
         </div>
     </header>
 
-    <!-- ✅ BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/3344412894" target="_blank" class="btn-flotante-whatsapp">
-        <i class="fa fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/3344412894" target="_blank" class="btn-flotante-whatsapp"><i class="fa fa-whatsapp"></i></a>
 
-       <!-- ==============================================
-    PÁGINA: INICIO
-    ===============================================-->
     <section id="pag-inicio" class="pagina activa">
         <div class="container mx-auto px-4 pt-6">
-            <p class="text-dorado font-semibold text-lg mb-6 text-center">
-                📢 ¡Reserva ya! Servicio directo, seguro y cómodo
-            </p>
-
-            <!-- ✅ NUEVA SECCIÓN: QUIENES SOMOS -->
+            <p class="text-dorado font-semibold text-lg mb-6 text-center">📢 ¡Reserva ya! Servicio directo, seguro y cómodo</p>
             <div class="max-w-3xl mx-auto bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado mb-12 text-center">
                 <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-bold text-dorado mb-5">¿Quiénes somos?</h2>
-                <p class="text-lg leading-relaxed text-gray-200">
-                    Grupo Travel Vive Vallarta es una empresa independiente la cual ofrece viajes desde Guadalajara a Puerto Vallarta o Puerto Vallarta a Guadalajara en viajes compartidos desde $600.00 MXN o privado a costos accesibles. Viajes a otras ciudades cercanas y viajes del o al Aeropuerto.
-                </p>
+                <p class="text-lg leading-relaxed text-gray-200">Grupo Travel Vive Vallarta es una empresa independiente la cual ofrece viajes desde Guadalajara a Puerto Vallarta o Puerto Vallarta a Guadalajara en viajes compartidos desde $600.00 MXN o privado a costos accesibles. Viajes a otras ciudades cercanas y viajes del o al Aeropuerto.</p>
             </div>
-
-            <!-- CARRUSEL DE TEMAS DE VIAJES -->
             <div class="py-8 bg-gradient-to-b from-fondo to-oscuro/30 rounded-lg mb-12">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold text-dorado mb-8">Bienvenido</h2>
-
                     <div class="carrusel-temas-contenedor max-w-3xl mx-auto relative">
                         <div class="carrusel-temas-item activo bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
                             <h3 class="text-dorado text-2xl font-bold mb-4">🚐 Guadalajara ↔ Puerto Vallarta</h3>
@@ -197,34 +94,25 @@
                             <p class="text-sm mt-3 text-gray-300">Servicio cómodo, seguro y con salidas diarias</p>
                             <p class="text-sm mt-3 text-gray-300">Servicio compartido o privado</p>
                         </div>
-
                         <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
                             <h3 class="text-dorado text-2xl font-bold mb-4">🌎 Otros destinos de la República</h3>
                             <p class="text-xl mb-3">Viajamos a diferentes destinos de la república</p>
                             <p class="text-xl font-semibold text-dorado">Precio sujeto a cotización</p>
                             <p class="text-sm mt-3 text-gray-300">Viajes en unidades cómodas</p>
                         </div>
-
                         <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
                             <h3 class="text-dorado text-2xl font-bold mb-4">✈️ Traslados al / del Aeropuerto</h3>
                             <p class="text-xl mb-3">Te llevamos o te recogemos en el aeropuerto hacia cualquier punto de la ciudad</p>
                             <p class="text-3xl font-bold text-dorado">$500 MXN</p>
                             <p class="text-sm mt-3 text-gray-300">Puntualidad y seguridad garantizada</p>
                         </div>
-
                         <button class="boton-carrusel left-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(-1)">&#10094;</button>
                         <button class="boton-carrusel right-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(1)">&#10095;</button>
-
-                        <div class="flex justify-center gap-3 mt-6">
-                            <span class="punto-indicador activo" onclick="irADiapositiva(0)"></span>
-                            <span class="punto-indicador" onclick="irADiapositiva(1)"></span>
-                            <span class="punto-indicador" onclick="irADiapositiva(2)"></span>
-                        </div>
+                        <div class="flex justify-center gap-3 mt-6"><span class="punto-indicador activo" onclick="irADiapositiva(0)"></span><span class="punto-indicador" onclick="irADiapositiva(1)"></span><span class="punto-indicador" onclick="irADiapositiva(2)"></span></div>
                     </div>
                     <p class="text-lg max-w-2xl mx-auto mt-8 text-gray-200">💳 Nota: El apartado de viajes se realiza con el <strong class="text-dorado font-bold">10%</strong> del valor total del servicio.</p>
                 </div>
-            </div>   
-            <!-- CARRUSEL DE IMÁGENES -->
+            </div>
             <div class="py-6">
                 <div class="container mx-auto px-4">
                     <div class="carrusel-contenedor max-w-4xl mx-auto rounded-lg overflow-hidden sombra-card borde-dorado">
@@ -380,7 +268,7 @@
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-center mb-10">Datos Bancarios y Reserva</h2>
             
-            <!-- DATOS BANCARIOS (SE QUEDA IGUAL) -->
+            <!-- DATOS BANCARIOS -->
             <div class="max-w-lg mx-auto bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado text-left mb-12">
                 <p class="mb-2"><strong class="text-dorado">Titular:</strong> Luis Angel German Bucio</p>
                 <p class="mb-2"><strong class="text-dorado">Banco:</strong> BBVA</p>
@@ -389,7 +277,7 @@
                 <p class="mt-4 text-sm italic">* Recuerda que se requiere el pago del <span class="text-dorado font-bold">10%</span> para apartar tu viaje.</p>
             </div>
 
-            <!-- ✅ FORMULARIO DE RESERVA NUEVO ✅ -->
+            <!-- FORMULARIO DE RESERVA -->
             <div class="max-w-2xl mx-auto bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado">
                 <h3 class="text-dorado text-xl font-bold text-center mb-6">Formulario de Reserva</h3>
                 <form id="formularioReserva" class="space-y-5">
@@ -433,7 +321,7 @@
                         <input type="date" id="fecha" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none" required>
                     </div>
 
-                    <!-- HORARIOS ACTUALIZADOS (LOS QUE PEDISTE) -->
+                    <!-- HORARIOS -->
                     <div>
                         <label class="block mb-2 text-gray-300">Hora de salida:</label>
                         <select id="hora" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none">
@@ -558,12 +446,8 @@
             indiceTemas++;
             mostrarTema(indiceTemas);
         }, 6000);
-    </script>
 
-    <script>
-               // --- SCRIPT PARA EL FORMULARIO DE RESERVAS ---
-
-        // ✅ TUS DATOS YA CONFIGURADOS
+        // --- ✅ SCRIPT DE RESERVAS (FUNCIONA CON GITHUB) ✅ ---
         const USUARIO = "luangebu";
         const REPO = "GT-Vive-Vallarta";
         const ARCHIVO = "reservas.json";
@@ -580,51 +464,62 @@
             contenedor.appendChild(nuevoCampo);
         }
 
-        // Guardar datos DIRECTO en GitHub
+        // Guardar datos DIRECTO en tu archivo de GitHub
         document.getElementById('formularioReserva').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Recolectar datos
+            // Recolectar datos del formulario
             const reserva = {
                 id: Date.now(),
                 fechaRegistro: new Date().toLocaleString('es-MX'),
-                nombreTitular: document.getElementById('nombreTitular').value,
-                telefono: document.getElementById('telefono').value,
+                nombreTitular: document.getElementById('nombreTitular').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
                 destino: document.getElementById('destino').value,
                 fechaViaje: document.getElementById('fecha').value,
                 horaViaje: document.getElementById('hora').value,
                 pasajeros: []
             };
 
-            // Recolectar nombres de acompañantes
+            // Guardar nombres de acompañantes
             document.querySelectorAll('#contenedorPasajeros input').forEach(input => {
                 if(input.value.trim() !== '') reserva.pasajeros.push(input.value.trim());
             });
 
             try {
-                // 1. Leer archivo actual de tu repositorio
-                let respuesta = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
-                let reservas = await respuesta.json();
+                // 1. Leer el archivo actual que está en tu repositorio
+                let respuestaLectura = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
+                if (!respuestaLectura.ok) throw new Error("No se pudo conectar");
+
+                let reservas = await respuestaLectura.json();
                 
-                // 2. Agregar la nueva reserva
+                // 2. Agregar la nueva reserva a la lista
                 reservas.push(reserva);
-                
-                // 3. Guardar cambios en el archivo
-                await fetch(`https://api.allorigins.win/raw?url=https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`, {
+
+                // 3. Obtener el SHA necesario para modificar el archivo
+                let respSHA = await fetch(`https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`);
+                let datosSHA = await respSHA.json();
+
+                // 4. Enviar los cambios para guardar
+                await fetch(`https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`, {
                     method: 'PUT',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({
                         message: "Nueva reserva recibida",
                         content: btoa(JSON.stringify(reservas, null, 2)),
-                        sha: await (await fetch(`https://api.allorigins.win/raw?url=https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`)).json().sha
+                        sha: datosSHA.sha,
+                        branch: "main"
                     })
                 });
 
                 alert('✅ ¡Reserva guardada correctamente! Gracias por preferirnos.');
                 this.reset();
-            } catch (err) {
-                alert('❌ Error: Asegúrate de haber creado el archivo reservas.json');
-                console.error(err);
+
+            } catch (error) {
+                alert('❌ ERROR: Asegúrate de que el archivo reservas.json exista y tenga este contenido exacto: []');
+                console.error(error);
             }
         });
     </script>
