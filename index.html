@@ -6,10 +6,10 @@
     <title>Grupo Travel Vive Vallarta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-      <meta name="google-site-verification" content="dpBTCy8-WAQ5NH04kV5Eq4CWVo-DkjHyJqKpug11IZY" />
-    
     <script>
+
+     <meta name="google-site-verification" content="dpBTCy8-WAQ5NH04kV5Eq4CWVo-DkjHyJqKpug11IZY" />
+
         tailwind.config = {
             theme: {
                 extend: {
@@ -33,28 +33,28 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .carrusel-temas-contenedor {
-    position: relative;
-    overflow: hidden;
-}
-.carrusel-temas-item {
-    display: none;
-    animation: fadeIn 0.6s ease-in-out;
-}
-.carrusel-temas-item.activo {
-    display: flex;
-}
-.punto-indicador {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.punto-indicador.activo {
-    background-color: #D4AF37;
-    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
-}
+                position: relative;
+                overflow: hidden;
+            }
+            .carrusel-temas-item {
+                display: none;
+                animation: fadeIn 0.6s ease-in-out;
+            }
+            .carrusel-temas-item.activo {
+                display: flex;
+            }
+            .punto-indicador {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: rgba(255,255,255,0.3);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .punto-indicador.activo {
+                background-color: #D4AF37;
+                box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+            }
             .content-auto {
                 content-visibility: auto;
             }
@@ -89,14 +89,55 @@
                 border: 1px solid #D4AF37;
             }
             .titulo-recuadro {
-            border: 2px solid #D4AF37;
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-            padding: 8px 20px;
-            border-radius: 10px;
-            display: inline-block;
-            background-color: rgba(212, 175, 55, 0.08);
+                border: 2px solid #D4AF37;
+                box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+                padding: 8px 20px;
+                border-radius: 10px;
+                display: inline-block;
+                background-color: rgba(212, 175, 55, 0.08);
             }
-          
+
+            /* ✅ ESTILOS PARA SISTEMA DE PÁGINAS */
+            .pagina {
+                display: none;
+                min-height: calc(100vh - 80px);
+                animation: aparecer 0.4s ease;
+            }
+            .pagina.activa {
+                display: block;
+            }
+            @keyframes aparecer {
+                from { opacity: 0; transform: scale(0.98); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            .menu-activo {
+                color: #D4AF37 !important;
+                font-weight: bold;
+                text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            }
+
+            /* ✅ ESTILO BOTÓN FLOTANTE WHATSAPP */
+            .btn-flotante-whatsapp {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                background-color: #25D366;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 2px rgba(37, 211, 102, 0.2);
+                z-index: 9999;
+                transition: all 0.3s ease;
+            }
+            .btn-flotante-whatsapp:hover {
+                transform: scale(1.1);
+                background-color: #1ebe5d;
+            }
         }
     </style>
 </head>
@@ -108,218 +149,212 @@
     <header class="sticky top-0 z-50 bg-fondo/90 backdrop-blur-md shadow-md">
         <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-            <h1 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dorado titulo-recuadro">Grupo Travel Vive Vallarta</h1>
+                <h1 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-dorado titulo-recuadro">Grupo Travel Vive Vallarta</h1>
             </div>
             <nav>
                 <ul class="flex flex-wrap gap-6 text-lg">
-                    <li><a href="#inicio" class="hover:text-dorado transicion">Inicio</a></li>
-                    <li><a href="#servicios" class="hover:text-dorado transicion">Servicios</a></li>
-                    <li><a href="#horarios" class="hover:text-dorado transicion">Horarios</a></li>
-                    <li><a href="#rutas" class="hover:text-dorado transicion">Rutas y Zonas</a></li>
-                    <li><a href="#datos-bancarios" class="hover:text-dorado transicion">Pagos</a></li>
-                    <li><a href="#contacto" class="hover:text-dorado transicion">Contacto</a></li>
+                    <li><a href="#inicio" class="menu-link menu-activo" data-pagina="inicio">Inicio</a></li>
+                    <li><a href="#servicios" class="menu-link" data-pagina="servicios">Servicios</a></li>
+                    <li><a href="#horarios" class="menu-link" data-pagina="horarios">Horarios</a></li>
+                    <li><a href="#rutas" class="menu-link" data-pagina="rutas">Rutas y Zonas</a></li>
+                    <li><a href="#datos-bancarios" class="menu-link" data-pagina="pagos"> Reservas y Pagos</a></li>
+                    <li><a href="#contacto" class="menu-link" data-pagina="contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    
-<!-- 👇 LEYENDA AGREGADA 👇 -->
-<p class="text-dorado font-semibold text-center mb-6">
-    📢 ¡Reserva ya! Enlace directo a WhatsApp disponible hasta el final de la página
-</p>
+    <!-- ✅ BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/3344412894" target="_blank" class="btn-flotante-whatsapp">
+        <i class="fa fa-whatsapp"></i>
+    </a>
 
-<!-- CARRUSEL DE TEMAS DE VIAJES -->
-```
-   <!-- ==============================================
-SECCIÓN 2: INICIO / BANNER PRINCIPAL (CARRUSEL DE TEMAS)
-===============================================-->
-<section id="inicio" class="py-16 bg-gradient-to-b from-fondo to-oscuro/30">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold text-dorado mb-8">Grupo Travel Vive Vallarta</h2>
-
-        <!-- CARRUSEL DE TEMAS DE VIAJES -->
-        <div class="carrusel-temas-contenedor max-w-3xl mx-auto relative">
-            
-            <!-- DIAPOSITIVA 1 -->
-            <div class="carrusel-temas-item activo bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
-                <h3 class="text-dorado text-2xl font-bold mb-4">🚐 Guadalajara ↔ Puerto Vallarta</h3>
-                <p class="text-xl mb-3">Viaja entre estas dos ciudades al mejor precio del mercado</p>
-                <p class="text-3xl font-bold text-dorado">$600 MXN</p>
-                <p class="text-sm mt-3 text-gray-300">Servicio cómodo, seguro y con salidas diarias</p>
-                <p class="text-sm mt-3 text-gray-300">Servicio compartido o privado</p>
-            </div>
-
-            <!-- DIAPOSITIVA 2 -->
-            <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
-                <h3 class="text-dorado text-2xl font-bold mb-4">🌎 Otros destinos de la República</h3>
-                <p class="text-xl mb-3">Viajamos a diferentes destinos de la republica</p>
-                <p class="text-xl font-semibold text-dorado">Precio sujeto a cotización</p>
-                <p class="text-sm mt-3 text-gray-300">Viajes en unidades comodas</p>
-            </div>
-
-            <!-- DIAPOSITIVA 3 -->
-            <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
-                <h3 class="text-dorado text-2xl font-bold mb-4">✈️ Traslados al / del Aeropuerto</h3>
-                <p class="text-xl mb-3">Te llevamos o te recogemos en el aeropuerto hacia cualquier punto de la ciudad</p>
-                <p class="text-3xl font-bold text-dorado">$500 MXN</p>
-                <p class="text-sm mt-3 text-gray-300">Puntualidad y seguridad garantizada</p>
-            </div>
-
-            <!-- BOTONES DE NAVEGACIÓN -->
-            <button class="boton-carrusel left-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(-1)">&#10094;</button>
-            <button class="boton-carrusel right-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(1)">&#10095;</button>
-
-            <!-- PUNTOS INDICADORES -->
-            <div class="flex justify-center gap-3 mt-6">
-                <span class="punto-indicador activo" onclick="irADiapositiva(0)"></span>
-                <span class="punto-indicador" onclick="irADiapositiva(1)"></span>
-                <span class="punto-indicador" onclick="irADiapositiva(2)"></span>
-            </div>
-        </div>
-
-        <p class="text-lg max-w-2xl mx-auto mt-8 text-gray-200">💳 Nota: El apartado de viajes se realiza con el <strong class="text-dorado font-bold">10%</strong> del valor total del servicio.</p>
-    </div>
-</section>
-
-
-    <!-- ==============================================
-    SECCIÓN 3: CARRUSEL DE IMÁGENES (FUNCIONAL AL 100%)
+       <!-- ==============================================
+    PÁGINA: INICIO
     ===============================================-->
-    <section class="py-12 bg-fondo">
-        <div class="container mx-auto px-4">
-            <div class="carrusel-contenedor max-w-4xl mx-auto rounded-lg overflow-hidden sombra-card borde-dorado">
-                
-                <div class="carrusel-item activo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4GHI33_50JYdCsX0sHlhq2EHzsphI-aK-Cw&s" alt="Puerto Vallarta" class="w-full h-[400px] object-cover">
-                    <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
-                        <h3 class="text-dorado text-2xl font-bold">disfruta tu viaje a Puerto Vallarta</h3>
-                        <p>Viaje seguro</p>
-                    </div>
-                </div>
-                <div class="carrusel-item activo">
-                    <img src="https://cdn.sanity.io/images/xhhnkk4g/production/8d579a0082ae12c118e5e0acab868d240c73497d-1080x720.webp?w=3840&q=65&fit=clip&auto=format" alt="Puerto Vallarta" class="w-full h-[400px] object-cover">
-                    <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
-                        <h3 class="text-dorado text-2xl font-bold">Puerto Vallarta</h3>
-                        <p>El destino soñado</p>
-                    </div>
-                </div>
+    <section id="pag-inicio" class="pagina activa">
+        <div class="container mx-auto px-4 pt-6">
+            <p class="text-dorado font-semibold text-lg mb-6 text-center">
+                📢 ¡Reserva ya! Servicio directo, seguro y cómodo
+            </p>
 
-                <div class="carrusel-item">
-                    <img src="https://media.istockphoto.com/id/1734243223/es/foto/muelle-de-puerto-vallarta-de-noche-m%C3%A9xico.jpg?s=612x612&w=0&k=20&c=boHA8fS6Dv4-YNdVG89WI6_vERKxqwin9BKvoFhRM6k=" alt="Disfruta la experiencia" class="w-full h-[400px] object-cover">
-                    <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
-                        <h3 class="text-dorado text-2xl font-bold">Comodidad y Seguridad</h3>
-                        <p>Viaja tranquilo con nosotros</p>
-                    </div>
-                </div>
+            <!-- ✅ NUEVA SECCIÓN: QUIENES SOMOS -->
+            <div class="max-w-3xl mx-auto bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado mb-12 text-center">
+                <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-bold text-dorado mb-5">¿Quiénes somos?</h2>
+                <p class="text-lg leading-relaxed text-gray-200">
+                    Grupo Travel Vive Vallarta es una empresa independiente la cual ofrece viajes desde Guadalajara a Puerto Vallarta o Puerto Vallarta a Guadalajara en viajes compartidos desde $600.00 MXN o privado a costos accesibles. Viajes a otras ciudades cercanas y viajes del o al Aeropuerto.
+                </p>
+            </div>
 
-                <div class="carrusel-item">
-                    <img src="https://media.istockphoto.com/id/647498166/es/foto/puerto-vallarta-m%C3%A9xico.jpg?s=612x612&w=0&k=20&c=1RuxnAmrAkBgw3VRaurr1bfAymPiVMLbaMRhBo-VhDM=" alt="Guadalajara" class="w-full h-[400px] object-cover">
-                    <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
-                        <h3 class="text-dorado text-2xl font-bold">Disfruta de puerto vallarta</h3>
-                        <p>Salidas diarias</p>
-                    </div>
-                </div>
-          <div class="carrusel-item">
-                    <img src="https://previews.123rf.com/images/khunaspix/khunaspix1611/khunaspix161100130/66397967-stack-of-traveling-luggage-in-airport-terminal-and-passenger-plane-flying-over-building-in-city.jpg" alt="Aeropuerto" class="w-full h-[400px] object-cover">
-                    <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
-                        <h3 class="text-dorado text-2xl font-bold">Traslados al Aeropuerto</h3>
-                        <p>Servicio puerta a puerta</p>
-                    </div>
-                </div>
-                
+            <!-- CARRUSEL DE TEMAS DE VIAJES -->
+            <div class="py-8 bg-gradient-to-b from-fondo to-oscuro/30 rounded-lg mb-12">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold text-dorado mb-8">Bienvenido</h2>
 
-                <!-- Botones de navegación -->
-                <button class="boton-carrusel left-4" onclick="moverCarrusel(-1)">&#10094;</button>
-                <button class="boton-carrusel right-4" onclick="moverCarrusel(1)">&#10095;</button>
+                    <div class="carrusel-temas-contenedor max-w-3xl mx-auto relative">
+                        <div class="carrusel-temas-item activo bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
+                            <h3 class="text-dorado text-2xl font-bold mb-4">🚐 Guadalajara ↔ Puerto Vallarta</h3>
+                            <p class="text-xl mb-3">Viaja entre estas dos ciudades al mejor precio del mercado</p>
+                            <p class="text-3xl font-bold text-dorado">$600 MXN</p>
+                            <p class="text-sm mt-3 text-gray-300">Servicio cómodo, seguro y con salidas diarias</p>
+                            <p class="text-sm mt-3 text-gray-300">Servicio compartido o privado</p>
+                        </div>
+
+                        <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
+                            <h3 class="text-dorado text-2xl font-bold mb-4">🌎 Otros destinos de la República</h3>
+                            <p class="text-xl mb-3">Viajamos a diferentes destinos de la república</p>
+                            <p class="text-xl font-semibold text-dorado">Precio sujeto a cotización</p>
+                            <p class="text-sm mt-3 text-gray-300">Viajes en unidades cómodas</p>
+                        </div>
+
+                        <div class="carrusel-temas-item bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado min-h-[220px] flex flex-col justify-center">
+                            <h3 class="text-dorado text-2xl font-bold mb-4">✈️ Traslados al / del Aeropuerto</h3>
+                            <p class="text-xl mb-3">Te llevamos o te recogemos en el aeropuerto hacia cualquier punto de la ciudad</p>
+                            <p class="text-3xl font-bold text-dorado">$500 MXN</p>
+                            <p class="text-sm mt-3 text-gray-300">Puntualidad y seguridad garantizada</p>
+                        </div>
+
+                        <button class="boton-carrusel left-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(-1)">&#10094;</button>
+                        <button class="boton-carrusel right-2 top-1/2 -translate-y-1/2" onclick="moverCarruselTemas(1)">&#10095;</button>
+
+                        <div class="flex justify-center gap-3 mt-6">
+                            <span class="punto-indicador activo" onclick="irADiapositiva(0)"></span>
+                            <span class="punto-indicador" onclick="irADiapositiva(1)"></span>
+                            <span class="punto-indicador" onclick="irADiapositiva(2)"></span>
+                        </div>
+                    </div>
+                    <p class="text-lg max-w-2xl mx-auto mt-8 text-gray-200">💳 Nota: El apartado de viajes se realiza con el <strong class="text-dorado font-bold">10%</strong> del valor total del servicio.</p>
+                </div>
+            </div>   
+            <!-- CARRUSEL DE IMÁGENES -->
+            <div class="py-6">
+                <div class="container mx-auto px-4">
+                    <div class="carrusel-contenedor max-w-4xl mx-auto rounded-lg overflow-hidden sombra-card borde-dorado">
+                        <div class="carrusel-item activo">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4GHI33_50JYdCsX0sHlhq2EHzsphI-aK-Cw&s" alt="Puerto Vallarta" class="w-full h-[400px] object-cover">
+                            <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
+                                <h3 class="text-dorado text-2xl font-bold">Disfruta tu viaje a Puerto Vallarta</h3>
+                                <p>Viaje seguro</p>
+                            </div>
+                        </div>
+                        <div class="carrusel-item">
+                            <img src="https://cdn.sanity.io/images/xhhnkk4g/production/8d579a0082ae12c118e5e0acab868d240c73497d-1080x720.webp?w=3840&q=65&fit=clip&auto=format" alt="Puerto Vallarta" class="w-full h-[400px] object-cover">
+                            <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
+                                <h3 class="text-dorado text-2xl font-bold">Puerto Vallarta</h3>
+                                <p>El destino soñado</p>
+                            </div>
+                        </div>
+                        <div class="carrusel-item">
+                            <img src="https://media.istockphoto.com/id/1734243223/es/foto/muelle-de-puerto-vallarta-de-noche-m%C3%A9xico.jpg?s=612x612&w=0&k=20&c=boHA8fS6Dv4-YNdVG89WI6_vERKxqwin9BKvoFhRM6k=" alt="Comodidad" class="w-full h-[400px] object-cover">
+                            <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
+                                <h3 class="text-dorado text-2xl font-bold">Comodidad y Seguridad</h3>
+                                <p>Viaja tranquilo con nosotros</p>
+                            </div>
+                        </div>
+                        <div class="carrusel-item">
+                            <img src="https://media.istockphoto.com/id/647498166/es/foto/puerto-vallarta-m%C3%A9xico.jpg?s=612x612&w=0&k=20&c=1RuxnAmrAkBgw3VRaurr1bfAymPiVMLbaMRhBo-VhDM=" alt="Guadalajara" class="w-full h-[400px] object-cover">
+                            <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
+                                <h3 class="text-dorado text-2xl font-bold">Disfruta de Puerto Vallarta</h3>
+                                <p>Salidas diarias</p>
+                            </div>
+                        </div>
+                        <div class="carrusel-item">
+                            <img src="https://previews.123rf.com/images/khunaspix/khunaspix1611/khunaspix161100130/66397967-stack-of-traveling-luggage-in-airport-terminal-and-passenger-plane-flying-over-building-in-city.jpg" alt="Aeropuerto" class="w-full h-[400px] object-cover">
+                            <div class="absolute bottom-0 w-full bg-gradient-to-t from-fondo/90 to-transparent p-6">
+                                <h3 class="text-dorado text-2xl font-bold">Traslados al Aeropuerto</h3>
+                                <p>Servicio puerta a puerta</p>
+                            </div>
+                        </div>
+
+                        <!-- Botones de navegación -->
+                        <button class="boton-carrusel left-4" onclick="moverCarrusel(-1)">&#10094;</button>
+                        <button class="boton-carrusel right-4" onclick="moverCarrusel(1)">&#10095;</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
- 
     <!-- ==============================================
-    SECCIÓN 4: HORARIOS
+    PÁGINA: SERVICIOS
     ===============================================-->
-    <section id="horarios" class="py-16 bg-oscuro/20">
-        <div class="container mx-auto px-4 text-center">
+    <section id="pag-servicios" class="pagina">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-center mb-12">Nuestros Servicios</h2>
+            <p class="text-center max-w-2xl mx-auto mb-10">Contamos con servicios compartidos y privados para 6 y 14 pasajeros. Unidades modernas, cómodas y seguras.</p>
+
+            <!-- Tarjetas de Servicios -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+                <div class="bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado transicion hover:scale-[1.02]">
+                    <h3 class="text-dorado text-xl font-bold mb-3">Servicios Compartidos</h3>
+                    <p>Ideal para viajar de forma económica y cómoda, compartiendo el viaje con otras personas manteniendo la seguridad y calidad del servicio.</p>
+                </div>
+                <div class="bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado transicion hover:scale-[1.02]">
+                    <h3 class="text-dorado text-xl font-bold mb-3">Servicios Privados y Ejecutivos</h3>
+                    <p>Servicio de transporte privado de alta calidad entre ambas ciudades, diseñado para brindarte la máxima comodidad y seguridad que mereces. Contamos con unidades modernas para tu confort.</p>
+                </div>
+            </div>
+
+            <!-- GALERÍA DE VEHÍCULOS -->
+            <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] font-bold text-dorado text-center mb-8">Nuestras Unidades</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                
+                <!-- VEHÍCULO 1 -->
+                <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
+                    <img src="https://http2.mlstatic.com/D_Q_NP_2X_729473-MLM107856988294_032026-T-peugeot-rifter-2024.webp" alt="Unidad 1" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
+                    </div>
+                </div>
+
+                <!-- VEHÍCULO 2 -->
+                <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
+                    <img src="https://www.suzukisantafe.com.mx/Assets/ModelosNuevos/Img/Modelos/ERTIGA-BOOSTERGREEN/26/Caracteristicas/su-ertiga-boostergreen-parrilla-03.jpg" alt="Unidad 2" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
+                    </div>
+                </div>
+
+                <!-- VEHÍCULO 3 -->
+                <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
+                    <img src="https://www.nissan.com.mx/content/dam/Nissan/mexico/assets/urvan/my26/vlp/diseno/nissan-2026-urvan_11_pasajeros_aa_paq_seg_tm-gris_oxford-gis-exterior_disen_pasajeros_parrilla_toma_de_aire_frontal-d.jpg.ximg.l_12_m.smart.jpg" alt="Unidad 3" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <p class="text-dorado font-semibold">Capacidad 13 Pasajeros</p>
+                    </div>
+                </div>
+
+                <!-- VEHÍCULO 4 -->
+                <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
+                    <img src="https://i.ytimg.com/vi/_q4sQxWhoGA/maxresdefault.jpg" alt="Unidad 4" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    PÁGINA: HORARIOS
+    ===============================================-->
+    <section id="pag-horarios" class="pagina">
+        <div class="container mx-auto px-4 py-16 text-center">
             <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado mb-10">Horarios de Atención y Servicio</h2>
             <div class="max-w-xl mx-auto bg-fondo/60 p-8 rounded-lg sombra-card borde-dorado">
                 <h3 class="text-xl mb-4">Viajes Diarios</h3>
-                <p class="text-lg mb-2">Estamos disponibles atencion a clientes de:</p>
+                <p class="text-lg mb-2">Estamos disponibles atención a clientes de:</p>
                 <p class="text-2xl font-semibold text-dorado mb-4">09:00 AM - 09:00 PM</p>
                 <p class="text-lg mb-2">Todos los días de la semana salidas de:</p>
-                <p class="text-2xl font-semibold text-dorado mb-4"> 06:00 AM - 12:00 PM</p>
+                <p class="text-2xl font-semibold text-dorado mb-4"> 07:00 AM - 15:00 PM - 23:50 PM</p>
             </div>
         </div>
     </section>
 
     <!-- ==============================================
-SECCIÓN 5: SERVICIOS
-===============================================-->
-<section id="servicios" class="py-16 bg-fondo">
-    <div class="container mx-auto px-4">
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-center mb-12">Nuestros Servicios</h2>
-        <p class="text-center max-w-2xl mx-auto mb-10">Contamos con servicios compartidos y privados para 4, 6 y 14 pasajeros. Unidades modernas, cómodas y seguras.</p>
-
-        <!-- Tarjetas de Servicios -->
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-            <div class="bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado transicion hover:scale-[1.02]">
-                <h3 class="text-dorado text-xl font-bold mb-3">Servicios Compartidos</h3>
-                <p>Ideal para viajar de forma económica y cómoda, compartiendo el viaje con otras personas manteniendo la seguridad y calidad del servicio.</p>
-            </div>
-            <div class="bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado transicion hover:scale-[1.02]">
-                <h3 class="text-dorado text-xl font-bold mb-3">Servicios Privados y Ejecutivos</h3>
-                <p>Servicio de transporte privado de alta calidad entre ambas ciudades, diseñado para brindarte la máxima comodidad y seguridad que mereces. Contamos con unidades modernas para tu confort.</p>
-            </div>
-        </div>
-
-        <!-- GALERÍA DE VEHÍCULOS -->
-        <h3 class="text-[clamp(1.5rem,2.5vw,2rem)] font-bold text-dorado text-center mb-8">Nuestras Unidades</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            
-            <!-- VEHÍCULO 1 -->
-            <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
-                <img src="https://http2.mlstatic.com/D_Q_NP_2X_729473-MLM107856988294_032026-T-peugeot-rifter-2024.webp" alt="Unidad 1" class="w-full h-48 object-cover">
-                <div class="p-4 text-center">
-                    <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
-                </div>
-            </div>
-
-            <!-- VEHÍCULO 2 -->
-            <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
-                <img src="https://www.suzukisantafe.com.mx/Assets/ModelosNuevos/Img/Modelos/ERTIGA-BOOSTERGREEN/26/Caracteristicas/su-ertiga-boostergreen-parrilla-03.jpg    " alt="Unidad 2" class="w-full h-48 object-cover">
-                <div class="p-4 text-center">
-                    <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
-                </div>
-            </div>
-
-            <!-- VEHÍCULO 3 -->
-            <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
-                <img src="https://www.nissan.com.mx/content/dam/Nissan/mexico/assets/urvan/my26/vlp/diseno/nissan-2026-urvan_11_pasajeros_aa_paq_seg_tm-gris_oxford-gis-exterior_disen_pasajeros_parrilla_toma_de_aire_frontal-d.jpg.ximg.l_12_m.smart.jpg" alt="Unidad 3" class="w-full h-48 object-cover">
-                <div class="p-4 text-center">
-                    <p class="text-dorado font-semibold">Capacidad 13 Pasajeros</p>
-                </div>
-            </div>
-
-            <!-- VEHÍCULO 4 -->
-            <div class="bg-oscuro/30 rounded-lg overflow-hidden sombra-card borde-dorado transicion hover:scale-[1.03] hover:shadow-dorado/20 hover:shadow-lg">
-                <img src="https://i.ytimg.com/vi/_q4sQxWhoGA/maxresdefault.jpg" alt="Unidad 4" class="w-full h-48 object-cover">
-                <div class="p-4 text-center">
-                    <p class="text-dorado font-semibold">Capacidad 6 Pasajeros</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-   
-
-    <!-- ==============================================
-    SECCIÓN 6: RUTAS Y ZONAS
+    PÁGINA: RUTAS Y ZONAS
     ===============================================-->
-    <section id="rutas" class="py-16 bg-oscuro/20">
-        <div class="container mx-auto px-4">
+    <section id="pag-rutas" class="pagina">
+        <div class="container mx-auto px-4 py-16">
             <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-center mb-12">Ruta a Puerto Vallarta</h2>
             
             <div class="max-w-2xl mx-auto bg-fondo/60 p-8 rounded-lg sombra-card borde-dorado">
@@ -340,51 +375,138 @@ SECCIÓN 5: SERVICIOS
         </div>
     </section>
 
-
     <!-- ==============================================
-    SECCIÓN 7: DATOS BANCARIOS
+    PÁGINA: PAGOS / DATOS BANCARIOS Y RESERVAS
     ===============================================-->
-    <section id="datos-bancarios" class="py-16 bg-fondo">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado mb-10">Datos Bancarios</h2>
-            <div class="max-w-lg mx-auto bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado text-left">
+    <section id="pag-pagos" class="pagina">
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-center mb-10">Datos Bancarios y Reserva</h2>
+            
+            <!-- DATOS BANCARIOS (SE QUEDA IGUAL) -->
+            <div class="max-w-lg mx-auto bg-oscuro/40 p-8 rounded-lg sombra-card borde-dorado text-left mb-12">
                 <p class="mb-2"><strong class="text-dorado">Titular:</strong> Luis Angel German Bucio</p>
                 <p class="mb-2"><strong class="text-dorado">Banco:</strong> BBVA</p>
                 <p class="mb-2"><strong class="text-dorado">Cuenta:</strong> 1550649663</p>
                 <p class="mb-2"><strong class="text-dorado">CLABE:</strong> 0121800155506496639</p>
                 <p class="mt-4 text-sm italic">* Recuerda que se requiere el pago del <span class="text-dorado font-bold">10%</span> para apartar tu viaje.</p>
             </div>
-        </div>
-    </section>
 
-       <!-- ==============================================
-    SECCIÓN 8: CONTACTO (CON ENLACE WHATSAPP)
-    ===============================================-->
-    <section id="contacto" class="py-16 bg-oscuro/20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado mb-10">Contáctanos</h2>
-            <div class="max-w-lg mx-auto bg-fondo/60 p-8 rounded-lg sombra-card borde-dorado">
-                <p class="text-xl mb-6">Estamos para servirte,para una mejor atencion escríbenos y reserva tu lugar</p>
-                
-                <!-- ENLACE DIRECTO A WHATSAPP -->
-                <a href="https://wa.me/3344412894" target="_blank" class="inline-flex items-center justify-center gap-3 bg-exito hover:bg-exito/80 text-white font-bold py-3 px-6 rounded-lg text-lg transicion sombra-card">
-                    <i class="fa fa-whatsapp text-2xl"></i>
-                    Enviar mensaje por WhatsApp
-                </a>
+            <!-- ✅ FORMULARIO DE RESERVA NUEVO ✅ -->
+            <div class="max-w-2xl mx-auto bg-oscuro/30 p-8 rounded-lg sombra-card borde-dorado">
+                <h3 class="text-dorado text-xl font-bold text-center mb-6">Formulario de Reserva</h3>
+                <form id="formularioReserva" class="space-y-5">
+                    
+                    <!-- NOMBRE COMPLETO DEL TITULAR -->
+                    <div>
+                        <label class="block mb-2 text-gray-300">Nombre completo del titular:</label>
+                        <input type="text" id="nombreTitular" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none" required>
+                    </div>
 
-                <!-- 👇 LEYENDA DE TÉRMINOS Y CONDICIONES (LO QUE AGREGUÉ) 👇 -->
-                <p class="mt-6 text-[11px] text-gray-400 leading-relaxed">
-                    <strong>Términos y condiciones:</strong> La cancelación por parte del usuario no será reembolsable. Si el usuario daña la unidad, será acreedor de la reparación monetaria de la misma.
-                </p>
+                    <!-- OTROS PASAJEROS (DINÁMICO) -->
+                    <div id="contenedorPasajeros">
+                        <label class="block mb-2 text-gray-300">Nombres de acompañantes (si viaja solo, dejar vacío):</label>
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro" placeholder="Nombre completo">
+                            <button type="button" onclick="agregarPasajero()" class="bg-secundario/70 text-claro px-3 py-1 rounded hover:bg-secundario transicion">+</button>
+                        </div>
+                    </div>
 
+                    <!-- TELÉFONO WHATSAPP -->
+                    <div>
+                        <label class="block mb-2 text-gray-300">Teléfono WhatsApp:</label>
+                        <input type="tel" id="telefono" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none" placeholder="Ej. 3312345678" required>
+                    </div>
+
+                    <!-- DESTINO -->
+                    <div>
+                        <label class="block mb-2 text-gray-300">¿A dónde viaja?</label>
+                        <select id="destino" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none">
+                            <option value="Guadalajara -> Puerto Vallarta">Guadalajara ➡️ Puerto Vallarta</option>
+                            <option value="Puerto Vallarta -> Guadalajara">Puerto Vallarta ➡️ Guadalajara</option>
+                            <option value="Aeropuerto -> Ciudad">Aeropuerto ➡️ Ciudad</option>
+                            <option value="Ciudad -> Aeropuerto">Ciudad ➡️ Aeropuerto</option>
+                            <option value="Otro destino">Otro destino / Cotización</option>
+                        </select>
+                    </div>
+
+                    <!-- FECHA -->
+                    <div>
+                        <label class="block mb-2 text-gray-300">Fecha del viaje:</label>
+                        <input type="date" id="fecha" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none" required>
+                    </div>
+
+                    <!-- HORARIOS ACTUALIZADOS (LOS QUE PEDISTE) -->
+                    <div>
+                        <label class="block mb-2 text-gray-300">Hora de salida:</label>
+                        <select id="hora" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro focus:border-dorado outline-none">
+                            <option value="7:00 AM">7:00 AM</option>
+                            <option value="15:00 PM">15:00 PM</option>
+                            <option value="23:50 PM">23:50 PM</option>
+                        </select>
+                    </div>
+
+                    <!-- BOTÓN DE ENVÍO -->
+                    <div class="text-center pt-4">
+                        <button type="submit" class="bg-dorado text-fondo font-bold py-3 px-8 rounded-lg text-lg hover:bg-dorado/90 transition-all transform hover:scale-105 sombra-card">
+                            Apartar Fecha
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- ==============================================
-    SCRIPT PARA CARRUSEL FUNCIONAL
+    PÁGINA: CONTACTO
+    ===============================================-->
+    <section id="pag-contacto" class="pagina">
+        <div class="container mx-auto px-4 py-16 text-center">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado mb-10">Contáctanos</h2>
+            <div class="max-w-lg mx-auto bg-fondo/60 p-8 rounded-lg sombra-card borde-dorado">
+                <p class="text-xl mb-6">Estamos para servirte, para una mejor atención escríbenos y reserva tu lugar</p>
+                
+                <!-- ENLACE DIRECTO A WHATSAPP -->
+                <a href="https://wa.me/3344412894" target="_blank" class="inline-flex items-center justify-center gap-3 bg-exito hover:bg-exito/80 text-white font-bold py-3 px-6 rounded-lg text-lg transicion sombra-card mb-6">
+                    <i class="fa fa-whatsapp text-2xl"></i>
+                    Enviar mensaje por WhatsApp
+                </a>
+
+                <p class="text-[11px] text-gray-400 leading-relaxed">
+                    <strong>Términos y condiciones:</strong> La cancelación por parte del usuario no será reembolsable. Si el usuario daña la unidad, será acreedor de la reparación monetaria de la misma.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================
+    SCRIPTS DE FUNCIONAMIENTO
     ===============================================-->
     <script>
+        // --- SISTEMA DE NAVEGACIÓN ENTRE PÁGINAS ---
+        const enlacesMenu = document.querySelectorAll('.menu-link');
+        const paginas = document.querySelectorAll('.pagina');
+
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Quitar clase activa de todos los enlaces y páginas
+                enlacesMenu.forEach(el => el.classList.remove('menu-activo'));
+                paginas.forEach(pag => pag.classList.remove('activa'));
+
+                // Agregar clase activa al enlace actual
+                this.classList.add('menu-activo');
+
+                // Mostrar la página correspondiente
+                const idPagina = 'pag-' + this.getAttribute('data-pagina');
+                document.getElementById(idPagina).classList.add('activa');
+
+                // Ir al inicio de la página
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        });
+
+        // --- CARRUSEL DE IMÁGENES GENERAL ---
         let indiceActual = 0;
         const items = document.querySelectorAll('.carrusel-item');
 
@@ -406,17 +528,8 @@ SECCIÓN 5: SERVICIOS
             indiceActual++;
             mostrarItem(indiceActual);
         }, 5000);
-    </script>
-    
-    <script>
-        let indiceActual = 0;
-        const items = document.querySelectorAll('.carrusel-item');
-        ... (tu código anterior) ...
-    </script>
 
-   
-    <script>
-        // CARRUSEL DE TEMAS INICIO
+        // --- CARRUSEL DE TEMAS INICIO ---
         let indiceTemas = 0;
         const itemsTemas = document.querySelectorAll('.carrusel-temas-item');
         const puntos = document.querySelectorAll('.punto-indicador');
@@ -449,6 +562,51 @@ SECCIÓN 5: SERVICIOS
         }, 6000);
     </script>
 
+    <script>
+        // --- SCRIPT PARA EL FORMULARIO DE RESERVAS ---
+
+        // Agregar más campos para pasajeros
+        function agregarPasajero() {
+            const contenedor = document.getElementById('contenedorPasajeros');
+            const nuevoCampo = document.createElement('div');
+            nuevoCampo.className = 'flex gap-2 mb-2';
+            nuevoCampo.innerHTML = `
+                <input type="text" class="w-full p-3 bg-fondo/50 border border-dorado/50 rounded text-claro" placeholder="Nombre completo">
+                <button type="button" onclick="this.parentElement.remove()" class="bg-red-700/70 text-claro px-3 py-1 rounded hover:bg-red-800 transicion">-</button>
+            `;
+            contenedor.appendChild(nuevoCampo);
+        }
+
+        // Guardar datos al enviar formulario
+        document.getElementById('formularioReserva').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Recolectar datos
+            const reserva = {
+                id: Date.now(),
+                fechaRegistro: new Date().toLocaleString(),
+                nombreTitular: document.getElementById('nombreTitular').value,
+                telefono: document.getElementById('telefono').value,
+                destino: document.getElementById('destino').value,
+                fechaViaje: document.getElementById('fecha').value,
+                horaViaje: document.getElementById('hora').value,
+                pasajeros: []
+            };
+
+            // Recolectar nombres de acompañantes
+            document.querySelectorAll('#contenedorPasajeros input').forEach(input => {
+                if(input.value.trim() !== '') reserva.pasajeros.push(input.value.trim());
+            });
+
+            // Guardar en el navegador
+            let reservasGuardadas = JSON.parse(localStorage.getItem('reservasViveVallarta')) || [];
+            reservasGuardadas.push(reserva);
+            localStorage.setItem('reservasViveVallarta', JSON.stringify(reservasGuardadas));
+
+            alert('✅ ¡Reserva guardada correctamente! Gracias por preferirnos.');
+            this.reset();
+        });
+    </script>
+
 </body>
 </html>
-    
