@@ -37,52 +37,41 @@
     </div>
 
     <script>
-        const USUARIO = "luangebu";
-        const REPO = "GT-Vive-Vallarta";
-        const ARCHIVO = "reservas.json";
 
-        async function cargarReservas() {
-            try {
-                // Leer el archivo directo
-                let respuesta = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
-                
-                if (!respuesta.ok) throw new Error("No se pudo leer el archivo");
+        function cargarReservas() {
+            const contenedor = document.getElementById('listaReservas');
+            const cargando = document.getElementById('cargando');
+            const sinReservas = document.getElementById('sinReservas');
 
-                let reservas = await respuesta.json();
+            // Obtener reservas guardadas
+            const reservas = JSON.parse(localStorage.getItem('listaReservas') || '[]');
 
-                // Ocultar mensajes
-                document.getElementById('cargando').classList.add('hidden');
+            cargando.classList.add('hidden');
 
-                if (reservas.length === 0) {
-                    document.getElementById('sinReservas').classList.remove('hidden');
-                    return;
-                }
-
-                // Mostrar lista
-                const contenedor = document.getElementById('listaReservas');
-                contenedor.classList.remove('hidden');
-
-                reservas.forEach((reserva, index) => {
-                    const tarjeta = document.createElement('div');
-                    tarjeta.className = 'bg-oscuro/40 p-5 rounded-lg borde-dorado sombra-card';
-                    tarjeta.innerHTML = `
-                        <p><strong class="text-dorado">#${index+1} | 📅 Fecha:</strong> ${reserva.fechaRegistro || 'Sin fecha'}</p>
-                        <p><strong class="text-dorado">👤 Titular:</strong> ${reserva.nombreTitular || 'Sin nombre'}</p>
-                        <p><strong class="text-dorado">📞 Teléfono:</strong> ${reserva.telefono || 'Sin teléfono'}</p>
-                        <p><strong class="text-dorado">🌍 Destino:</strong> ${reserva.destino || 'Sin destino'}</p>
-                        <p><strong class="text-dorado">🚗 Viaje:</strong> ${reserva.fechaViaje || ''} a las ${reserva.horaViaje || ''}</p>
-                        <p><strong class="text-dorado">👥 Acompañantes:</strong> ${reserva.pasajeros?.join(', ') || 'Ninguno / Viaja solo'}</p>
-                    `;
-                    contenedor.appendChild(tarjeta);
-                });
-
-            } catch (error) {
-                document.getElementById('cargando').textContent = "❌ ERROR: Asegúrate de que el archivo reservas.json exista y tenga: []";
-                console.error(error);
+            if (reservas.length === 0) {
+                sinReservas.classList.remove('hidden');
+                return;
             }
+
+            contenedor.classList.remove('hidden');
+
+            reservas.forEach((reserva, index) => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'bg-oscuro/40 p-5 rounded-lg borde-dorado sombra-card';
+                tarjeta.innerHTML = `
+                    <p><strong class="text-dorado">#${index+1} | 📅 Fecha:</strong> ${reserva.fechaRegistro || 'Sin fecha'}</p>
+                    <p><strong class="text-dorado">👤 Titular:</strong> ${reserva.nombreTitular || 'Sin nombre'}</p>
+                    <p><strong class="text-dorado">📞 Teléfono:</strong> ${reserva.telefono || 'Sin teléfono'}</p>
+                    <p><strong class="text-dorado">🌍 Destino:</strong> ${reserva.destino || 'Sin destino'}</p>
+                    <p><strong class="text-dorado">🚗 Viaje:</strong> ${reserva.fechaViaje || ''} a las ${reserva.horaViaje || ''}</p>
+                    <p><strong class="text-dorado">👥 Acompañantes:</strong> ${reserva.pasajeros?.join(', ') || 'Ninguno'}</p>
+                `;
+                contenedor.appendChild(tarjeta);
+            });
         }
 
         cargarReservas();
+    </script>
     </script>
 </body>
 </html>
