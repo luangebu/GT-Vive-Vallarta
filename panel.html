@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Reservas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primario:'#0F4C81', oscuro:'#083057', fondo:'#000000', texto:'#FFFFFF', dorado:'#D4AF37', exito:'#25D366' } } } }
+    </script>
+    <style>
+        .borde-dorado { border: 1px solid #D4AF3740; }
+        .sombra-card { box-shadow: 0 0 15px #D4AF3720; }
+    </style>
+</head>
+<body class="bg-fondo text-texto font-sans p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold text-dorado mb-8 text-center">📋 Reservas Recibidas - Grupo Travel Vive Vallarta</h1>
+        <div id="cargando" class="text-center text-dorado text-xl">Cargando reservas...</div>
+        <div id="listaReservas" class="space-y-4 hidden"></div>
+        <p id="sinReservas" class="text-center text-gray-400 text-xl hidden">Aún no hay reservas registradas.</p>
+    </div>
+
+    <script>
+        // ✅ TUS DATOS YA PUESTOS
+        const USUARIO = "luangebu";
+        const REPO = "GT-Vive-Vallarta";
+        const ARCHIVO = "reservas.json";
+
+        async function cargar() {
+            try {
+                let res = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
+                const reservas = await res.json();
+                document.getElementById('cargando').classList.add('hidden');
+
+                if (reservas.length === 0) {
+                    document.getElementById('sinReservas').classList.remove('hidden');
+                    return;
+                }
+
+                const contenedor = document.getElementById('listaReservas');
+                contenedor.classList.remove('hidden');
+
+                reservas.forEach((r, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-oscuro/40 p-5 rounded-lg borde-dorado sombra-card';
+                    div.innerHTML = `
+                        <p><strong class="text-dorado">📅 Fecha registro:</strong> ${r.fechaRegistro}</p>
+                        <p><strong class="text-dorado">👤 Titular:</strong> ${r.nombreTitular}</p>
+                        <p><strong class="text-dorado">📞 Teléfono:</strong> ${r.telefono}</p>
+                        <p><strong class="text-dorado">🌍 Destino:</strong> ${r.destino}</p>
+                        <p><strong class="text-dorado">🚗 Viaje:</strong> ${r.fechaViaje} - ${r.horaViaje}</p>
+                        <p><strong class="text-dorado">👥 Acompañantes:</strong> ${r.pasajeros.join(', ') || 'Ninguno / Viaja solo'}</p>
+                    `;
+                    contenedor.appendChild(div);
+                });
+
+            } catch (e) {
+                document.getElementById('cargando').textContent = "❌ No se pudo cargar";
+            }
+        }
+        cargar();
+    </script>
+</body>
+</html>
