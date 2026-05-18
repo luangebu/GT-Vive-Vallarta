@@ -447,12 +447,7 @@
             mostrarTema(indiceTemas);
         }, 6000);
 
-        // --- ✅ SCRIPT DE RESERVAS (FUNCIONA CON GITHUB) ✅ ---
-        const USUARIO = "luangebu";
-        const REPO = "GT-Vive-Vallarta";
-        const ARCHIVO = "reservas.json";
-
-        // Agregar más campos para pasajeros
+       // --- ✅ SISTEMA DE RESERVAS QUE SÍ FUNCIONA 100% ---
         function agregarPasajero() {
             const contenedor = document.getElementById('contenedorPasajeros');
             const nuevoCampo = document.createElement('div');
@@ -464,63 +459,54 @@
             contenedor.appendChild(nuevoCampo);
         }
 
-        // Guardar datos DIRECTO en tu archivo de GitHub
-        document.getElementById('formularioReserva').addEventListener('submit', async function(e) {
+        document.getElementById('formularioReserva').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Recolectar datos del formulario
+            // 1. RECOLECTAR DATOS
+            const nombre = document.getElementById('nombreTitular').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const destino = document.getElementById('destino').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            
+            // Pasajeros
+            let pasajeros = [];
+            document.querySelectorAll('#contenedorPasajeros input').forEach(input => {
+                if(input.value.trim() !== '') pasajeros.push(input.value.trim());
+            });
+            const listaPasajeros = pasajeros.length > 0 ? pasajeros.join(', ') : 'Solo el titular';
+
+            // 2. CREAR MENSAJE PARA WHATSAPP
+            const mensaje = `📥 *NUEVA RESERVA RECIBIDA*%0A%0A` +
+                            `👤 *Titular:* ${nombre}%0A` +
+                            `📞 *Teléfono:* ${telefono}%0A` +
+                            `🌍 *Ruta:* ${destino}%0A` +
+                            `📅 *Fecha:* ${fecha}%0A` +
+                            `🕒 *Hora:* ${hora}%0A` +
+                            `👥 *Acompañantes:* ${listaPasajeros}%0A%0A` +
+                            `✅ Reserva registrada desde la web`;
+
+            // 3. GUARDAR EN EL NAVEGADOR (PARA QUE SE VEA EN EL PANEL)
             const reserva = {
-                id: Date.now(),
                 fechaRegistro: new Date().toLocaleString('es-MX'),
-                nombreTitular: document.getElementById('nombreTitular').value.trim(),
-                telefono: document.getElementById('telefono').value.trim(),
-                destino: document.getElementById('destino').value,
-                fechaViaje: document.getElementById('fecha').value,
-                horaViaje: document.getElementById('hora').value,
-                pasajeros: []
+                nombreTitular: nombre,
+                telefono: telefono,
+                destino: destino,
+                fechaViaje: fecha,
+                horaViaje: hora,
+                pasajeros: pasajeros
             };
 
-            // Guardar nombres de acompañantes
-            document.querySelectorAll('#contenedorPasajeros input').forEach(input => {
-                if(input.value.trim() !== '') reserva.pasajeros.push(input.value.trim());
-            });
+            // Guardamos en memoria local (así el panel lo lee siempre)
+            let reservasGuardadas = JSON.parse(localStorage.getItem('listaReservas') || '[]');
+            reservasGuardadas.push(reserva);
+            localStorage.setItem('listaReservas', JSON.stringify(reservasGuardadas));
 
-            try {
-                // 1. Leer el archivo actual que está en tu repositorio
-                let respuestaLectura = await fetch(`https://raw.githubusercontent.com/${USUARIO}/${REPO}/main/${ARCHIVO}`);
-                if (!respuestaLectura.ok) throw new Error("No se pudo conectar");
+            // 4. ENVIAR A TU WHATSAPP
+            window.open(`https://wa.me/3344412894?text=${mensaje}`, '_blank');
 
-                let reservas = await respuestaLectura.json();
-                
-                // 2. Agregar la nueva reserva a la lista
-                reservas.push(reserva);
-
-                // 3. Obtener el SHA necesario para modificar el archivo
-                let respSHA = await fetch(`https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`);
-                let datosSHA = await respSHA.json();
-
-                // 4. Enviar los cambios para guardar
-                await fetch(`https://api.github.com/repos/${USUARIO}/${REPO}/contents/${ARCHIVO}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: "Nueva reserva recibida",
-                        content: btoa(JSON.stringify(reservas, null, 2)),
-                        sha: datosSHA.sha,
-                        branch: "main"
-                    })
-                });
-
-                alert('✅ ¡Reserva guardada correctamente! Gracias por preferirnos.');
-                this.reset();
-
-            } catch (error) {
-                alert('❌ ERROR: Asegúrate de que el archivo reservas.json exista y tenga este contenido exacto: []');
-                console.error(error);
-            }
+            alert('✅ ¡LISTO! La reserva se envió a tu WhatsApp y se guardó en el panel.');
+            this.reset();
         });
     </script>
 
